@@ -1,15 +1,10 @@
-import {Sequelize} from "sequelize";
+const {Sequelize,DataTypes} = require("sequelize");
 
-import db from "../config/database.js";
-
-const {DataTypes} = Sequelize;
-
-const User = db.define('users',{
-	username : {
-		type : DataTypes.STRING
-	}
-},{
-	freezeTableName : true
-});
-
-module.exports = User;
+module.exports = require("../config/database.js").define("users",{
+  	username : {
+    	type: DataTypes.STRING
+  	}
+  },{ 
+  	freezeTableName: true,
+  }
+);

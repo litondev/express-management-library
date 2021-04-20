@@ -1,46 +1,47 @@
 const express = require('express');
 const app = express();
+const path = require("path");
 const bodyParser = require('body-parser');    
 const session = require('express-session');
-const webRoute = require("./routes/web.js");
-const db = require("./configs/database.js");
 
 require("dotenv").config();
 
-const port = process.env.port || 3000;
+process.env.ROOT = __dirname;
 
+app.set("views",path.join(__dirname,'views'));
 app.set('view engine', 'ejs');
 app.use(express.static("public"));
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({
+	extended: true
+}));
 app.use(session({
     secret: "secret123",
     saveUninitialized: true,
     resave: true
 }));
 
-db.authenticate().then(() => {
-	console.log("Yes");
-})
-.catch((err) => {
-	console.log(err);
-})
+// const db = require("./config/database.js");
+// db.authenticate().then(() => {
+	// console.log("Yes");
+// })
+// .catch((err) => {
+	// console.log("NO");
+// });
 
-const winston = require("winston");
+// const winston = require("winston");
+// winston.loggers.add("development",{
+// 	level : 'info',
+// 	format : winston.format.json(),
+// 	transports : [
+// 		new winston.transports.File({
+// 			filename : './logs/logs.log'
+// 		})
+// 	]
+// });
+// winston.loggers.get("development").info("Log Ready");
 
-winston.loggers.add("development",{
-	level : 'info',
-	format : winston.format.json(),
-	transports : [
-		new winston.transports.File({
-			filename : 'error.log'
-		})
-	]
-});
+require("./routes/web.js")(app);
 
-winston.loggers.get("development").info("testing");
-
-webRoute(app);
-
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`Live`);
 })
