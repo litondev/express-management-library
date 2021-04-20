@@ -1,0 +1,73 @@
+users :
+ id 
+  - primary key
+  - index
+  - int 
+
+ username 
+  - index
+  - unique
+  - varchar(50)
+
+ email 
+  - index
+  - unique
+  - varchar(50)
+
+ password
+  - text
+
+ role 
+  - enum
+   - admin
+   - user
+
+ photo
+  - varchar(50)
+
+ created_at
+  - datetime
+
+ updated_at
+  - datetime
+
+guest_books :
+  id 
+   - primary key
+   - index
+   - int
+
+  user_id
+   - int
+
+  description 
+   - text
+   - index
+
+  created_at
+   - datetime
+
+  updated_at
+   - datetime
+
+books :
+  id 
+   - primary key
+   - index
+   - int
+
+  name  
+   - index
+   - varchar(50)
+
+  status 
+   - index
+   - enum
+    - on borrow
+    - off borrow
+
+  created_at
+   - datetime
+
+  updated_at
+   - datetime
