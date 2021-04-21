@@ -3,6 +3,8 @@ const app = express();
 const path = require("path");
 const bodyParser = require('body-parser');    
 const session = require('express-session');
+const flash = require("connect-flash");
+const cookieParser = require("cookie-parser");
 
 require("dotenv").config();
 
@@ -14,11 +16,13 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({
 	extended: true
 }));
+app.use(cookieParser('secret'));
 app.use(session({
     secret: "secret123",
     saveUninitialized: true,
     resave: true
 }));
+app.use(flash());
 
 // const db = require("./config/database.js");
 // db.authenticate().then(() => {
