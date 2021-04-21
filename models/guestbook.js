@@ -1,33 +1,25 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
-const User = require("./user.js");
+const {Sequelize,DataTypes} = require("sequelize");
+const User = require("./user");
 
-module.exports = (sequelize, DataTypes) => {
-  class GuestBook extends Model {   
-  };
-
-  GuestBook.init({
+const GuestBook = require("../config/database.js")
+  .define("guest_books",{
     userId : {
-		type: DataTypes.INTEGER
-	},
+      type: DataTypes.INTEGER
+    },
     description : {
-      	type: DataTypes.STRING
+      type: DataTypes.TEXT
     }
-  }, {
-    sequelize,
-    modelName: 'GuestBook',
-    tableName : "guest_books"
-  });
+  },{ 
+    freezeTableName: true,
+  }
+);
 
-  //GuestBook.associate = (models) => {
-  	GuestBook.belongsTo(User,{
-		foreignKey : 'userId',
-		as : 'users',
-		targetKey : 'id'
-	});
-  //}
+GuestBook.belongsTo(User,{ 
+	as : 'user',
+});
 
-  return GuestBook;
+GuestBook.Hello = () => {
+  console.log("Hello");
 };
+
+module.exports = GuestBook;
