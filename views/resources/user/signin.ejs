@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Signin</title> 
+  <link rel="stylesheet" href="/assets/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="/assets/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="/assets/plugins/toastr/toastr.min.css">
+</head>
+<body class="hold-transition login-page">
+  
+<div class="login-box">
+  <div class="card card-outline card-primary">
+    <div class="card-header text-center">
+      <a href="#" class="h1"><b>Sign</b>In</a>
+    </div>
+    <div class="card-body">
+      <p class="login-box-msg">Masuk Ke Akun Anda</p>
+		<form method="post" action="/signin">
+		<input type="hidden" value="<%= csrfToken %>" name="_csrf">
+        <div class="input-group mb-3">
+          <input type="email" class="form-control" placeholder="Email" name="email">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-envelope"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="password" class="form-control" placeholder="Password" name="password">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-8">
+            <div class="icheck-primary">
+              <input type="checkbox" id="remember">
+              <label for="remember">
+                Ingat Saya
+              </label>
+            </div>
+          </div>
+          <div class="col-4">
+            <button type="submit" class="btn btn-primary btn-block">Masuk</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="/assets/plugins/jquery/jquery.min.js"></script>
+<script src="/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/dist/js/adminlte.min.js"></script>
+<script src="/assets/plugins/toastr/toastr.min.js"></script>
+
+<% if(flashMessage && flashMessageStatus){ %>
+	<% if(flashMessageStatus == "error"){ %>
+	<script>
+		toastr.error(
+			"<%= flashMessage %>"
+		)
+	</script>
+	<% } %>
+
+	<% if(flashMessageStatus == "success"){ %>
+	<script>
+		toastr.success(
+			"<%= flashMessage %>"
+		)
+	</script>
+	<% } %>
+<% } %>
+
+<script>
+if ('serviceWorker' in navigator) {
+  var newVersion = "V1";
+  var version = localStorage.getItem('SW');
+  !version ? localStorage.setItem('SW',newVersion) : '';
+  console.log('START SW');
+  navigator.serviceWorker.register("/assets/service-worker.js")
+  .then(function(registration) {
+    if(version != newVersion){
+        registration.unregister()
+            .then(function(isUnregister){
+            if(isUnregister){
+                console.log('UNREGISTER SW');
+                localStorage.setItem('SW',newVersion);
+            }
+        });    
+    }
+    console.log('SUCCESS SW');
+   }).catch(() => {    
+    console.log('FAILED SW');
+  });
+} else {
+    console.log('NOT FOUND SW');
+}
+</script>
+</body>
+</html>

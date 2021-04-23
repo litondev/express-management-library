@@ -16,21 +16,21 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({
 	extended: true
 }));
-app.use(cookieParser('secret'));
+app.use(cookieParser(process.env.SESSION_SECRET));
 app.use(session({
-    secret: "secret123",
+    secret: process.env.SESSION_SECRET,
     saveUninitialized: true,
     resave: true
 }));
 app.use(flash());
 
-// const db = require("./config/database.js");
-// db.authenticate().then(() => {
-	// console.log("Yes");
-// })
-// .catch((err) => {
-	// console.log("NO");
-// });
+const db = require("./config/database.js");
+db.authenticate().then(() => {
+	console.log("Yes");
+})
+.catch((err) => {
+	console.log("NO");
+});
 
 // const winston = require("winston");
 // winston.loggers.add("development",{

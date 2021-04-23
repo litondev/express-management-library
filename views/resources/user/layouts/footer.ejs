@@ -1,0 +1,28 @@
+</div>
+
+<script src="/assets/plugins/jquery/jquery.min.js"></script>
+<script src="/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/dist/js/adminlte.min.js"></script>
+<script src="/assets/plugins/toastr/toastr.min.js"></script>
+<script src="{{asset('assets/backend/plugins/summernote/summernote-bs4.min.js')}}"></script>
+
+<% if(flashMessage && flashMessageStatus){ %>
+	<% if(flashMessageStatus == "error"){ %>
+	<script>
+		toastr.error(
+			"<%= flashMessage %>"
+		)
+	</script>
+	<% } %>
+
+	<% if(flashMessageStatus == "success"){ %>
+	<script>
+		toastr.success(
+			"<%= flashMessage %>"
+		)
+	</script>
+	<% } %>
+<% } %>
+
+</body>
+</html>

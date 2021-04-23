@@ -1,4 +1,7 @@
 'use strict';
+
+const Bcrypt = require("../helpers/bcrypt");
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
   	var users = [];
@@ -7,7 +10,7 @@ module.exports = {
   	 users.push({
         username: `test${i}`,      
         email: `test${i}@gmail.com`,
-        password: 'text'
+        password: Bcrypt.hash("12345678")
       })
   	}
 
