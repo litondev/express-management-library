@@ -9,6 +9,7 @@ module.exports = (req,res,next) => {
     title : "",
     flashMessage : sessionFlash ? sessionFlash.flashMessage : null,
     flashMessageStatus : sessionFlash ? sessionFlash.flashMessageStatus : null,
+    user : req.session.user || null
    };
 
    req.session.sessionFlash = null;
@@ -19,6 +20,18 @@ module.exports = (req,res,next) => {
       "flashMessageStatus" : status
     };                
     res.redirect('back');
+   }
+
+   res.setErrorPage = (error,status = 500) => {
+    if(status === 500){
+      res.render("resources/errors/500",{
+        error : error
+      })
+    }else if(status === 400){
+      res.render("resources/errors/404",{
+        error : error
+      });
+    }
    }
 
    next();

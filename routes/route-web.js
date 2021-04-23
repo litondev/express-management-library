@@ -8,6 +8,8 @@ module.exports.UserGuestBookController = require(`${USERPATH}/GuestBookControlle
 module.exports.UserProfilController = require(`${USERPATH}/ProfilController`);
 
 module.exports.UserActionAuthController = require(`${USERPATH}/actions/AuthController`);
+module.exports.UserActionGuestBookController = require(`${USERPATH}/actions/GuestBookController`);
+module.exports.UserActionController = require(`${USERPATH}/actions/UserController`);
 
 // ADMIN CONTROLLER
 module.exports.AdminHomeController = require(`${ADMINPATH}/HomeController`);

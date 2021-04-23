@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin</title>
+  <title>User</title>
   <link rel="stylesheet" href="/assets/plugins/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="/assets/dist/css/adminlte.min.css">
   <link rel="stylesheet" href="/assets/plugins/toastr/toastr.min.css">
@@ -45,11 +45,11 @@
     <div class="sidebar">
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{asset('assets/images/users/'.Auth::user()->photo)}}" class="img-circle elevation-2" alt="User Image">
+          <img src="<%= '/assets/images/users/'+user.photo %>" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="/user/profil" class="d-block">
-            User
+            <%= user.username %>
           </a>
         </div>
       </div>

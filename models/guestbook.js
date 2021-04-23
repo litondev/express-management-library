@@ -7,6 +7,9 @@ const GuestBook = DB.define("guest_books",{
     },
     description : {
       type: DataTypes.TEXT
+    },
+    createdAt : {
+      type : DataTypes.DATE
     }
 });
 

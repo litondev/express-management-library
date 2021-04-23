@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Signin</title> 
+  <title>Signup</title> 
   <link rel="stylesheet" href="/assets/plugins/fontawesome-free/css/all.min.css">
   <link rel="stylesheet" href="/assets/dist/css/adminlte.min.css">
   <link rel="stylesheet" href="/assets/plugins/toastr/toastr.min.css">
@@ -13,12 +13,20 @@
 <div class="login-box">
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="#" class="h1"><b>Sign</b>In</a>
+      <a href="#" class="h1"><b>Sign</b>Up</a>
     </div>
     <div class="card-body">
-      <p class="login-box-msg">Masuk Ke Akun Anda</p>
-		<form method="post" action="/signin">
-		<input type="hidden" value="<%= csrfToken %>" name="_csrf">
+      <p class="login-box-msg">Daftarkan Akun Anda</p>
+		  <form method="post" action="/signup">
+		    <input type="hidden" value="<%= csrfToken %>" name="_csrf">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Username" name="username">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-envelope"></span>
+            </div>
+          </div>
+        </div>
         <div class="input-group mb-3">
           <input type="email" class="form-control" placeholder="Email" name="email">
           <div class="input-group-append">
@@ -48,7 +56,7 @@
             <button type="submit" class="btn btn-primary btn-block">Masuk</button>
           </div>
           <div class="col-12">
-            <a href="/signup">Belum Punya Akun</a>
+            <a href="/">Sudah Punya Akun</a>
           </div>
         </div>
       </form>

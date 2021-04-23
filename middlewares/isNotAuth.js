@@ -21,6 +21,18 @@ module.exports = (req,res,next) => {
     res.redirect('back');
    }
 
+  res.setErrorPage = (error,status = 500) => {
+    if(status === 500){
+      res.render("resources/errors/500",{
+        error : error
+      })
+    }else if(status === 400){
+      res.render("resources/errors/404",{
+        error : error
+      });
+    }
+   }
+
    next();
    console.log("isNotAuth");
 }

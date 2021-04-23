@@ -1,5 +1,38 @@
 <%- include('layouts/header') -%>
-  <div class="content-wrapper">   
-    Profil
+ <div class="content-wrapper">   
+  <div class="container">
+  <div class="row">
+  	<div class="col-12">
+	    <div class="card mt-4 ml-2">
+    		<div class="card-body text-c">        
+    		  <div class="row">
+          <div class="col-6 text-center">
+            <img src="/assets/images/users/<%= user.photo %>"
+              style="width:50%">
+          </div>
+          <div class="col-6">
+            <form method="POST" action="/user/update/data">
+              <input type="hidden" value="<%= csrfToken %>" name="_csrf">
+              Email <br/>
+              <input type="text" class="form-control" name="email"
+                value="<%= user.email %>">
+              <br/>
+              Password <br/>
+              <input type="password" class="form-control" name="password"
+                placeholder="Isi jika ingin menganti password">      
+              <br/>
+              Password Konfirmasi <br/>
+              <input type="password" class="form-control" name="password_confirm"
+                placeholder="Masukan Password Konfirmasi">
+              <br/>
+              <button class="btn btn-primary">Kirim</button>
+            </form>
+          </div>
+          </div>
+    		</div>
+    	</div>
+	  </div>
+    </div>
+   </div>
   </div>
 <%- include('layouts/footer') -%>

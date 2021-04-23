@@ -13,6 +13,7 @@ module.exports = (req,res,next) => {
     title : "",
     flashMessage : sessionFlash ? sessionFlash.flashMessage : null,
     flashMessageStatus : sessionFlash ? sessionFlash.flashMessageStatus : null,
+    user : req.session.user || null
    };
 
    req.session.sessionFlash = null;
