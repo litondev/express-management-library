@@ -16,7 +16,23 @@
   </li>
    
   <li>
-   <b> Copy example.env to .env and setting it</b>
+   <b> Copy example.env to .env</b>
+  </li>
+  
+  <li>
+   <p>
+    <b> Setting file .env </b>
+   <p>
+    
+   <p>
+    PORT={your port} <br/> <br/>
+    DB_HOST={your host/address database} <br/>
+    DB_USERNAME={your username database} <br/>
+    DB_PASSWORD={your password database} <br/>
+    DB_DATABASE={your database name} <br/>
+    DB_DB={your database management} <br/> <br/>
+    SESSION_SECRET={your secret session}
+   </p>
   </li>
  
   <li>
