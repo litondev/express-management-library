@@ -11,6 +11,6 @@
     <b> npm install </b>
   </li>
   <li>
-    <b> nodemon index.js </b>
+    <b> nodemon app.js </b>
   </li>
  </ul>
