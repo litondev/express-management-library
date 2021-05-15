@@ -10,6 +10,15 @@
   <li>
     <b> npm install </b>
   </li>
+ 
+  <li>
+   <b> npm install -g nodemon</b>
+  </li>
+   
+  <li>
+   <b> Copy example.env to .env and setting it</b>
+  </li>
+ 
   <li>
     <b> nodemon app.js </b>
   </li>
