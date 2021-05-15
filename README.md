@@ -57,3 +57,8 @@
    </p>
   </li>
  </ul>
+
+ <b> Login User </b>
+ <p>
+  See the seeder user file
+ </p>
