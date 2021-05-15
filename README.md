@@ -23,7 +23,11 @@
    <p>
     <b> Setting file .env </b>
    <p>
-    
+  
+   <p>
+    <b style="color:red"> create database first </b>
+   </p>
+   
    <p>
     PORT={your port} <br/> <br/>
     DB_HOST={your host/address database} <br/>
@@ -37,5 +41,19 @@
  
   <li>
     <b> nodemon app.js </b>
+  </li>
+  
+  <li>
+     <b> Migrate Database </b>
+     <p>
+      sequelize db:migrate                     
+     <p>
+  </li>
+  
+  <li>
+   <b> Seed Database </b>
+   <p>
+      sequelize db:seed:all
+   </p>
   </li>
  </ul>
